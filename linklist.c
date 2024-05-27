@@ -1,14 +1,16 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
 void insert();
 void display();
+void deleteatfirst();
+void deletefromend();
+
 
 int main()
 {
     int n;
-    printf("1. Insert\n2. Display\n3. Exit");
+    printf("1. Insert\n2.deleteatfirst\n3.Display\n4.deletefromend\n5. Exit");
     do{
         printf("\nEnter your choice:");
         scanf("%d",&n);
@@ -20,6 +22,12 @@ int main()
             display();
             break;
             case 3:
+            deleteatfirst();
+            break;
+            case 4:
+            deletefromend();
+            break;
+            case 5:
             break;
             default:
             printf("Invalid Choice");
@@ -52,10 +60,10 @@ void insert()
     else{
         n1 *q;
         q=head;
-        while(q->next!=null)
+        while(q->next !=NULL)
         {
-        	q=q->next_node;
-        	;
+        	q = q-> next;
+        	
 		}
 		q->next=new_node;
 		
@@ -79,4 +87,38 @@ void display()
         }
     }
     
+}
+
+void deleteatfirst()
+{
+	n1 *temp;
+	if(head==NULL)
+	{
+		printf("list is empty");
+	}
+	else
+	{
+		temp=head;
+		head=temp->next;
+		printf("deleted node is :%d", temp->data);
+		free(temp);
+	}
+}
+void deletefromend(){
+	n1 *temp;
+	if(head==NULL)
+	{
+		printf("list is empty");
+	}
+	else
+	{
+		temp=head;
+		while(temp->next->next!=NULL)
+		{
+			temp=temp->next;
+		}
+		printf("deleted node is:%d , temp->next->date");
+		temp->next=NULL;
+		free(temp->next);
+	}
 }
